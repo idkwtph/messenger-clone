@@ -47,6 +47,14 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
     return isActive ? "Active" : "Offline";
   }, [data]);
 
+  const removeText = useMemo(() => {
+    if (data.isGroup) {
+      return "Leave";
+    }
+
+    return "Remove";
+  }, [data]);
+
   return (
     <>
       <ConfirmModal
@@ -122,7 +130,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                 <IoTrash size={20} />
                               </div>
                               <div className="text-sm font-light text-neutral-600">
-                                Delete
+                                {removeText}
                               </div>
                             </div>
                           </div>
